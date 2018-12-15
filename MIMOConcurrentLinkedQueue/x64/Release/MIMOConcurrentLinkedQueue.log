@@ -1,0 +1,9 @@
+﻿  LockFreeSharedPointer.cpp
+  main.cpp
+  MIMOLinkedQueue.cpp
+  MIMOLinkedQueueTest.cpp
+c:\users\quarter\source\repos\mimoconcurrentlinkedqueue\mimoconcurrentlinkedqueue\mimolinkedqueuetest.cpp(52): warning C4244: “=”: 从“uintptr_t”转换到“uint32_t”，可能丢失数据
+  正在生成代码
+  All 354 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  MIMOConcurrentLinkedQueue.vcxproj -> C:\Users\Quarter\source\repos\MIMOConcurrentLinkedQueue\x64\Release\MIMOConcurrentLinkedQueue.exe

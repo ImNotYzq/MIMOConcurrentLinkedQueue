@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\test">
+      <UniqueIdentifier>{c2c9e4eb-0994-455c-aeab-5e6ee25e9ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\concurrent">
+      <UniqueIdentifier>{766fc7b0-9f7c-4b66-b08a-d9415b44f841}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\concurrent">
+      <UniqueIdentifier>{6fe2cbe9-4bd5-4845-b8b5-fbc6ce5fe41c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\concurrent\linkstructure">
+      <UniqueIdentifier>{e23f5d9b-e165-4ef0-8fb2-710fd42ea793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\concurrent\linkstructure">
+      <UniqueIdentifier>{398fb4b8-a392-4f6f-bce4-04acabe1b005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\test">
+      <UniqueIdentifier>{ea48d179-d73f-41c4-aca2-cdb0cb32c2a8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DebugHead.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultFunctionDelete.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Well512.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkElem.h">
+      <Filter>头文件\concurrent\linkstructure</Filter>
+    </ClInclude>
+    <ClInclude Include="MIMOLinkedQueue.h">
+      <Filter>头文件\concurrent\linkstructure</Filter>
+    </ClInclude>
+    <ClInclude Include="TestBase.h">
+      <Filter>头文件\test</Filter>
+    </ClInclude>
+    <ClInclude Include="MIMOLinkedQueueTest.h">
+      <Filter>头文件\test</Filter>
+    </ClInclude>
+    <ClInclude Include="LockFreeSharedPointer.h">
+      <Filter>头文件\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="HazardPointer.h">
+      <Filter>头文件\concurrent</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Well512.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LockFreeSharedPointer.cpp">
+      <Filter>源文件\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="MIMOLinkedQueue.cpp">
+      <Filter>源文件\concurrent\linkstructure</Filter>
+    </ClCompile>
+    <ClCompile Include="HazardPointer.cpp">
+      <Filter>源文件\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="TestBase.cpp">
+      <Filter>源文件\test</Filter>
+    </ClCompile>
+    <ClCompile Include="MIMOLinkedQueueTest.cpp">
+      <Filter>源文件\test</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
