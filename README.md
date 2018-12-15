@@ -5,7 +5,7 @@ This project is licensed under the GNU GPL3.0 license.
 
 This is a c++17 project edited with visual studio.
 
-Currently working on comparing different implementations of the lock-free linked queue.
+Currently working on comparing different implementations of the MIMO lock-free linked queue.
 
 Main components of the project:
 1.Lock-free Linked Queue.
