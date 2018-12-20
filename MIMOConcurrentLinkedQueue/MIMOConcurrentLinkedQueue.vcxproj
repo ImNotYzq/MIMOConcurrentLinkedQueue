@@ -122,22 +122,23 @@
     <ClInclude Include="DebugHead.h" />
     <ClInclude Include="DefaultFunctionDelete.h" />
     <ClInclude Include="HazardPointer.h" />
+    <ClInclude Include="LinkedQueueBase.h" />
     <ClInclude Include="LinkElem.h" />
     <ClInclude Include="LockFreeSharedPointer.h" />
-    <ClInclude Include="MIMOLinkedQueue.h" />
+    <ClInclude Include="MIMOLinkedQueue_ER.h" />
     <ClInclude Include="MIMOLinkedQueueTest.h" />
+    <ClInclude Include="MIMOLinkedQueue_ORI.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TestBase.h" />
-    <ClInclude Include="Well512.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HazardPointer.cpp" />
     <ClCompile Include="LockFreeSharedPointer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MIMOLinkedQueue.cpp" />
+    <ClCompile Include="MIMOLinkedQueue_ER.cpp" />
     <ClCompile Include="MIMOLinkedQueueTest.cpp" />
+    <ClCompile Include="MIMOLinkedQueue_ORI.cpp" />
     <ClCompile Include="TestBase.cpp" />
-    <ClCompile Include="Well512.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

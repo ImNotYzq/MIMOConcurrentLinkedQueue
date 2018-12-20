@@ -42,13 +42,7 @@
     <ClInclude Include="Singleton.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Well512.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="LinkElem.h">
-      <Filter>头文件\concurrent\linkstructure</Filter>
-    </ClInclude>
-    <ClInclude Include="MIMOLinkedQueue.h">
       <Filter>头文件\concurrent\linkstructure</Filter>
     </ClInclude>
     <ClInclude Include="TestBase.h">
@@ -63,19 +57,22 @@
     <ClInclude Include="HazardPointer.h">
       <Filter>头文件\concurrent</Filter>
     </ClInclude>
+    <ClInclude Include="LinkedQueueBase.h">
+      <Filter>头文件\concurrent\linkstructure</Filter>
+    </ClInclude>
+    <ClInclude Include="MIMOLinkedQueue_ER.h">
+      <Filter>头文件\concurrent\linkstructure</Filter>
+    </ClInclude>
+    <ClInclude Include="MIMOLinkedQueue_ORI.h">
+      <Filter>头文件\concurrent\linkstructure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Well512.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="LockFreeSharedPointer.cpp">
       <Filter>源文件\concurrent</Filter>
-    </ClCompile>
-    <ClCompile Include="MIMOLinkedQueue.cpp">
-      <Filter>源文件\concurrent\linkstructure</Filter>
     </ClCompile>
     <ClCompile Include="HazardPointer.cpp">
       <Filter>源文件\concurrent</Filter>
@@ -85,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="MIMOLinkedQueueTest.cpp">
       <Filter>源文件\test</Filter>
+    </ClCompile>
+    <ClCompile Include="MIMOLinkedQueue_ER.cpp">
+      <Filter>源文件\concurrent\linkstructure</Filter>
+    </ClCompile>
+    <ClCompile Include="MIMOLinkedQueue_ORI.cpp">
+      <Filter>源文件\concurrent\linkstructure</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,9 +1,10 @@
 #pragma once
 
 #include<chrono>
+#include<random>
 #include "TestBase.h"
 #include "LockFreeSharedPointer.h"
-#include "MIMOLinkedQueue.h"
+#include "LinkedQueueBase.h"
 
 namespace test 
 {
@@ -16,21 +17,20 @@ namespace test
 	public:
 		MIMOLinkedQueueTest(helper h);
 		~MIMOLinkedQueueTest();
-
-		void SetThreadCount(int count);
-		void SetInsertCount(uintptr_t count);
 	protected:
 		virtual void StartRun() override;
+		virtual bool CheckInputValues() override;
 	private:
-		using LinkedQueue = concurrent::linkstructure::MIMOlinkedQueue::MIMOLinkedQueue;
+		using LinkedQueue = concurrent::LinkedQueueBase;
 
-		int threadCount;
-		uintptr_t insertCount;
+		uint32_t testTargetType;
+		uint32_t threadCount;
+		uint32_t insertCount;
 		std::atomic<uintptr_t> valueFlagResult;
 		std::atomic<uintptr_t> valueFlagResource;
 		std::atomic<long> runningThreadCount;
 		std::atomic<std::chrono::high_resolution_clock::rep> timeCost;
 
-		static void ThreadFunc(PointerType testObject, concurrent::LockFreeSharedPointer<LinkedQueue> h, uintptr_t insertCount);
+		static void ThreadFunc(PointerType testObject, concurrent::LockFreeSharedPointer<LinkedQueue> h, unsigned int seed, uintptr_t insertCount);
 	};
 }

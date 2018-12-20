@@ -8,25 +8,11 @@ using namespace std;
 
 int Entrance()
 {
-	int tc, ic;
 	auto testObj = test::MIMOLinkedQueueTest::PointerType::Create();
 
-	shared_ptr<int> p;
-
-	while (true)
+	while (testObj->RunTest() != test::TestBase::RunTestStatus::COMPLETED)
 	{
-		do {
-			cin.clear();
-			cin >> tc >> ic;
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		} while (!cin);
-
-		if (tc == 0 || ic == 0)
-			break;
-
-		testObj->SetThreadCount(tc);
-		testObj->SetInsertCount(ic);
-		testObj->RunTest();
+		std::this_thread::sleep_for(std::chrono::milliseconds(200));
 	}
 
 	return 0;

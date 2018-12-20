@@ -1,6 +1,7 @@
 #include "TestBase.h"
 
 #include <iostream>
+#include <string>
 
 #include "DebugHead.h"
 
@@ -25,18 +26,34 @@ namespace test
 		return isTestStillRunning;
 	}
 
-	bool TestBase::RunTest()
+	TestBase::RunTestStatus TestBase::RunTest()
 	{
 		bool threadRunning;
 		do {
 			threadRunning = isTestStillRunning;
 			if (threadRunning)
-				return false;
+				return RunTestStatus::STILL_RUNNING;
 		} while (!isTestStillRunning.compare_exchange_weak(threadRunning, true));
+
+		std::string errorMessage;
+		for (auto iter = inputElems.begin(); iter != inputElems.end(); iter++)
+		{
+			std::cout << (*iter)->GetDescription() << std::endl;
+			while (!(*iter)->InputElem(std::cin, errorMessage))
+			{
+				std::cout << errorMessage << std::endl;
+			}
+		}
+
+		if (!CheckInputValues())
+		{
+			isTestStillRunning = false;
+			return RunTestStatus::COMPLETED;
+		}
 
 		StartRun();
 
-		return true;
+		return RunTestStatus::SUCCEED;
 	}
 
 	void TestBase::OnComplete(TestResult& result)
@@ -49,5 +66,19 @@ namespace test
 	{
 		isTestStillRunning = false;
 		OnComplete(result);
+	}
+
+	std::string TestBase::RequiredInputElemBase::GetDescription()
+	{
+		return description;
+	}
+
+	TestBase::RequiredInputElemBase::RequiredInputElemBase(std::string description)
+		: description(description)
+	{
+	}
+
+	TestBase::RequiredInputElemBase::~RequiredInputElemBase()
+	{
 	}
 }
