@@ -76,9 +76,9 @@ namespace concurrent::linkstructure::MIMOlinkedQueue
 		HazardPointer hp;
 		
 		//Simply take the node out when it is confirmed to be linked.
-		h = hp.HoldPointer(head);
 		do
 		{
+			h = hp.HoldPointer(head);
 			if (h == preparedPointer)
 				return false;
 		} while (!head.compare_exchange_weak(h, h->next));
