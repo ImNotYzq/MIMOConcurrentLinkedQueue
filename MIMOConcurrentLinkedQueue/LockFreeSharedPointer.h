@@ -20,7 +20,7 @@ namespace concurrent {
 		struct helper {};
 
 		LockFreeSharedPointedBase();
-		~LockFreeSharedPointedBase();
+		virtual ~LockFreeSharedPointedBase();
 
 		template<typename T>
 		LockFreeSharedPointer<T> GetThisPointer();
@@ -96,12 +96,14 @@ namespace concurrent {
 	inline LockFreeSharedPointer<T>::LockFreeSharedPointer(nullptr_t)
 		: pointer(nullptr)
 	{
+		HazardPointer::HoldSingleton();
 	}
 
 	template<typename T>
 	inline LockFreeSharedPointer<T>::LockFreeSharedPointer(T * p)
 		: pointer(p)
 	{
+		HazardPointer::HoldSingleton();
 	}
 
 	template<typename T>
@@ -121,13 +123,8 @@ namespace concurrent {
 	template<typename T>
 	inline void LockFreeSharedPointer<T>::PutPointerIn(T * aim)
 	{
-		T * p;
-
-		do
-		{
-			p = pointer;
-		} while (!pointer.compare_exchange_weak(p, aim));
-
+		T * p = pointer;
+		while (!pointer.compare_exchange_weak(p, aim));
 		ReleasePointer(p);
 	}
 

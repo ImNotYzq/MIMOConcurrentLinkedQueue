@@ -124,6 +124,7 @@ namespace concurrent
 		using InnerManager = InnerHazardPointer::HazardPointersManager;
 		using InnerCache = InnerHazardPointer::HazardCache;
 	public:
+		static void HoldSingleton();
 		static int GetTotalPointerCount();
 		static int GetThreadHoldingCount();
 		template<class T>
@@ -147,6 +148,12 @@ namespace concurrent
 				if (temp == from)
 					return temp;
 			}
+		}
+		template<class T>
+		T* HoldPointer(T* from)
+		{
+			hp->pointer = from;
+			return from;
 		}
 	private:
 		InnerHazardPointer * hp;

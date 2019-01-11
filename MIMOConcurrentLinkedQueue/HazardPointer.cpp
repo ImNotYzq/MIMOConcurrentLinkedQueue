@@ -160,7 +160,12 @@ namespace concurrent {
 		return hp->pointer;
 	}
 
-	int HazardPointer::GetTotalPointerCount() 
+	void HazardPointer::HoldSingleton()
+	{
+		InnerManager::GetInstance();
+	}
+
+	int HazardPointer::GetTotalPointerCount()
 	{
 		return InnerCenter::GetInstance().GetCount();
 	}

@@ -16,7 +16,7 @@ namespace test
 		using PointerType = concurrent::LockFreeSharedPointer<MIMOLinkedQueueTest>;
 	public:
 		MIMOLinkedQueueTest(helper h);
-		~MIMOLinkedQueueTest();
+		virtual ~MIMOLinkedQueueTest();
 	protected:
 		virtual void StartRun() override;
 		virtual bool CheckInputValues() override;

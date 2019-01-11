@@ -13,12 +13,8 @@ namespace test
 	}
 
 
-	TestBase::~TestBase() noexcept(false)
+	TestBase::~TestBase()
 	{
-		if(isTestStillRunning)
-		{
-			throw std::exception("Test object is destructed before complete!\nCheck your test class");
-		}
 	}
 
 	bool TestBase::isNowRunning()
@@ -28,12 +24,10 @@ namespace test
 
 	TestBase::RunTestStatus TestBase::RunTest()
 	{
-		bool threadRunning;
-		do {
-			threadRunning = isTestStillRunning;
-			if (threadRunning)
-				return RunTestStatus::STILL_RUNNING;
-		} while (!isTestStillRunning.compare_exchange_weak(threadRunning, true));
+		bool threadRunning = isTestStillRunning;
+		while (!threadRunning && !isTestStillRunning.compare_exchange_weak(threadRunning, true));
+		if(threadRunning)
+			return RunTestStatus::STILL_RUNNING;
 
 		std::string errorMessage;
 		for (auto iter = inputElems.begin(); iter != inputElems.end(); iter++)

@@ -40,30 +40,28 @@ namespace concurrent::linkstructure::MIMOlinkedQueue
 		
 		//Tail node is like a entrance, every enqueue operation just need to hold one node from tail and set the current node to its 'next' pointer.
 		//We do not care about whether the prev node has linked yet. It would be linked to the list one day.
-		do
-		{
-			prev = tail;
-		} while (!tail.compare_exchange_weak(prev, elem));
+		prev = tail; 
+		while (!tail.compare_exchange_weak(prev, elem));
 
 		//I would like to put the value to the prev node, since no other threads might change the value before the current node is linked to it.
 		prev->value = value;
-		do
-		{
-			next = prev->next;
-		} while (!prev->next.compare_exchange_weak(next, elem));
+		next = prev->next; 
+		while (!prev->next.compare_exchange_weak(next, elem));
 
 		//The next pointer become a circle to itself is used as a mark of needing to move the prepared pointer back till the null pointer.
 		if (next == prev)
 		{
 			do {
-				next = preparedPointer->next;
+				LinkElem * preparedPointerTemp = preparedPointer;
+				next = preparedPointerTemp->next;
 				//Keep moving back prepared pointer untill it reaches the null pointer.
 				while (next != nullptr) {
-					if (next == preparedPointer)
+					if (next == preparedPointerTemp)
 						return;
-					preparedPointer = next;
-					next = preparedPointer->next;
+					preparedPointerTemp = next;
+					next = preparedPointerTemp->next;
 				}
+				preparedPointer = preparedPointerTemp;
 				//When the prepared pointer cannot move back again, try to put the mark to the current prepared pointer's next pointer.
 				//If another thread is tryint to point it to a new node, only one action would succeed.
 				//If the current thread failed, then just move on untill another null pointer.
@@ -78,9 +76,9 @@ namespace concurrent::linkstructure::MIMOlinkedQueue
 		HazardPointer hp;
 		
 		//Simply take the node out when it is confirmed to be linked.
+		h = hp.HoldPointer(head);
 		do
 		{
-			h = hp.HoldPointer(head);
 			if (h == preparedPointer)
 				return false;
 		} while (!head.compare_exchange_weak(h, h->next));

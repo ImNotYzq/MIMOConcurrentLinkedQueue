@@ -49,11 +49,11 @@ namespace concurrent::linkstructure::MIMOlinkedQueue
 			if (next != nullptr)
 			{
 				tail.compare_exchange_weak(t, next);
-				continue;
 			}
-
-			if (t->next.compare_exchange_weak(next, elem))
+			else if (t->next.compare_exchange_weak(next, elem))
+			{
 				break;
+			}
 		}
 		tail.compare_exchange_strong(t, elem);
 	}

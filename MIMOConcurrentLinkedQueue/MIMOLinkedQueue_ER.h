@@ -19,7 +19,7 @@ namespace concurrent::linkstructure {
 		private:
 			std::atomic<struct __LinkElem *> head;
 			std::atomic<struct __LinkElem *> tail;
-			struct __LinkElem* preparedPointer;
+			struct __LinkElem* volatile preparedPointer;
 		};
 	}
 }

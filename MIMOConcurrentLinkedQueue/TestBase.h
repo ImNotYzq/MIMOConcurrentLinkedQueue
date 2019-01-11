@@ -28,7 +28,7 @@ namespace test
 		class RequiredInputElem;
 	public:
 		TestBase();
-		virtual ~TestBase() noexcept(false);
+		virtual ~TestBase();
 
 		bool isNowRunning();
 		RunTestStatus RunTest();
